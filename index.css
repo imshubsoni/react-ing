@@ -1,0 +1,59 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 4px 0px;
+}
+
+.header-container {
+  border: 1px solid black;
+  margin: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 100px;
+}
+
+.nav-items {
+  display: flex;
+  list-style-type: none;
+}
+
+.nav-items > li {
+  padding: 12px;
+  font-size: 22px;
+  /* transition: all 4s ease-in-out;  ---> Transition deosn't work on text-decoration */
+}
+
+.nav-items > li:hover {
+  text-decoration: underline;
+}
+
+.body-container {
+  margin: 5px;
+  padding: 10px;
+}
+
+.search-button {
+  margin: 0px 5px;
+}
+
+.res-container {
+  padding: 10px 0px;
+}
+
+.res-card-container {
+  width: 200px;
+  height: 350px;
+  border: 1px solid black;
+}
+
+.res-card-image {
+  width: 100%;
+}
