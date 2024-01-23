@@ -23,7 +23,67 @@ const Header = () => {
   );
 };
 
-const ResCard = () => {
+const resData = {
+  info: {
+    id: "65797",
+    name: "Leon's - Burgers & Wings (Leon Grill)",
+    cloudinaryImageId: "b2edbc28b7b8219d6e0a9c049ce06658",
+    locality: "Koramangala",
+    areaName: "Koramangala",
+    costForTwo: "₹300 for two",
+    cuisines: ["American", "Snacks", "Turkish", "Portuguese", "Continental"],
+    avgRating: 4.4,
+    parentId: "371281",
+    avgRatingString: "4.4",
+    totalRatingsString: "10K+",
+    sla: {
+      deliveryTime: 25,
+      lastMileTravel: 1.4,
+      serviceability: "SERVICEABLE",
+      slaString: "25 mins",
+      lastMileTravelString: "1.4 km",
+      iconType: "ICON_TYPE_EMPTY",
+    },
+    availability: {
+      nextCloseTime: "2024-01-24 04:00:00",
+      opened: true,
+    },
+    badges: {},
+    isOpen: true,
+    type: "F",
+    badgesV2: {
+      entityBadges: {
+        imageBased: {},
+        textBased: {},
+        textExtendedBadges: {},
+      },
+    },
+    aggregatedDiscountInfoV3: {
+      header: "₹120 OFF",
+      subHeader: "ABOVE ₹199",
+      discountTag: "FLAT DEAL",
+    },
+    differentiatedUi: {
+      displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+      differentiatedUiMediaDetails: {
+        mediaType: "ADS_MEDIA_ENUM_IMAGE",
+        lottie: {},
+        video: {},
+      },
+    },
+    reviewsSummary: {},
+    displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+    restaurantOfferPresentationInfo: {},
+  },
+  analytics: {},
+  cta: {
+    link: "https://www.swiggy.com/restaurants/leons-burgers-and-wings-leon-grill-koramangala-bangalore-65797",
+    type: "WEBLINK",
+  },
+};
+
+const ResCard = (props) => {
+  const { resData } = props;
   return (
     <div
       className="res-card-container"
@@ -32,14 +92,18 @@ const ResCard = () => {
       <div className="res-card-image-container">
         <img
           className="res-card-image"
-          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e0839ff574213e6f35b3899ebf1fc597"
+          src={
+            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+            resData.info.cloudinaryImageId
+          }
         ></img>
       </div>
       <div className="res-card-desc-container">
-        <h2>Chinese Wok</h2>
-        <h4>Chinese, Asian, Tibetian</h4>
-        <h4>4.1 Stars</h4>
-        <h4>27 mins</h4>
+        <h2>{resData.info.name}</h2>
+        <h4>{resData.info.cuisines.join(", ")}</h4>
+        <h4>{resData.info.avgRating} Stars</h4>
+        <h4>{resData.info.costForTwo}</h4>
+        <h4>{resData.info.sla.deliveryTime} Mins</h4>
       </div>
     </div>
   );
@@ -53,7 +117,7 @@ const Body = () => {
         <button className="search-button">Search</button>
       </div>
       <div className="res-container">
-        <ResCard />
+        <ResCard resData={resData} />
       </div>
     </div>
   );

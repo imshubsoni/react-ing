@@ -49,9 +49,14 @@ h6 {
 }
 
 .res-card-container {
-  width: 200px;
-  height: 350px;
-  border: 1px solid black;
+  width: 250px;
+  border: 2px solid transparent;
+  transition: all 0.5s ease-in-out;
+}
+
+.res-card-container:hover {
+  border-color: black;
+  cursor: pointer;
 }
 
 .res-card-image {
