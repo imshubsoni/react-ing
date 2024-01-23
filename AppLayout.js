@@ -59,14 +59,9 @@ const Body = () => {
         <button className="search-button">Search</button>
       </div>
       <div className="res-container">
-        <ResCard resData={resList[0]} />
-        <ResCard resData={resList[1]} />
-        <ResCard resData={resList[2]} />
-        <ResCard resData={resList[3]} />
-        <ResCard resData={resList[5]} />
-        <ResCard resData={resList[6]} />
-        <ResCard resData={resList[7]} />
-        <ResCard resData={resList[8]} />
+        {resList.map((restaurantInfo) => (
+          <ResCard resData={restaurantInfo} />
+        ))}
       </div>
     </div>
   );
