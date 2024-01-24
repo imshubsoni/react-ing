@@ -1,5 +1,5 @@
 import ResCard from "./ResCard";
-import resList from "./RestaurantsList";
+import resList from "../utils/RestaurantsList";
 
 const Body = () => {
   return (
