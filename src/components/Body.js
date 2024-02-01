@@ -1,5 +1,6 @@
 import ResCard from "./ResCard";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -20,6 +21,11 @@ const Body = () => {
   useEffect(() => {
     fetchAndUseSwiggyApiData();
   }, []);
+
+  // Conditional Rendering -- rendering based on a condition or multiple conditions
+  if (listOfRestaurants.length === 0) {
+    return <Shimmer />;
+  }
 
   return (
     <div className="body-container">

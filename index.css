@@ -53,17 +53,25 @@ h6 {
   margin-right: 10px;
 }
 
-.res-container {
+.res-container,
+.shimmer-container {
   padding: 10px 0px;
   display: flex;
   flex-wrap: wrap;
 }
 
-.res-card-container {
+.res-card-container,
+.shimmer-card {
   width: 250px;
   margin: 5px;
   border: 2px solid transparent;
   transition: all 0.5s ease-in-out;
+}
+
+.shimmer-card {
+  height: 380px;
+  background-color: lightgray;
+  padding: 5px;
 }
 
 .res-card-container:hover {
