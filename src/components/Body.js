@@ -1,9 +1,25 @@
 import ResCard from "./ResCard";
-import resList from "../utils/RestaurantsList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState(resList);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+
+  const fetchAndUseSwiggyApiData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9121181&lng=77.6445548&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    const json = await data.json();
+
+    // Optional Chaining
+    setListOfRestaurants(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
+
+  useEffect(() => {
+    fetchAndUseSwiggyApiData();
+  }, []);
 
   return (
     <div className="body-container">
@@ -15,7 +31,7 @@ const Body = () => {
         <button
           className="filter-button"
           onClick={() => {
-            setListOfRestaurants(resList);
+            fetchAndUseSwiggyApiData();
           }}
         >
           All Restaurants
