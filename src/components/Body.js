@@ -7,6 +7,7 @@ const Body = () => {
   const [filteredListOfRestaurants, setFilteredListOfRestaurants] = useState(
     []
   );
+  const [searchText, setSearchText] = useState("");
 
   const fetchAndUseSwiggyApiData = async () => {
     const data = await fetch(
@@ -30,8 +31,6 @@ const Body = () => {
   }, []);
 
   const searchRestaurants = () => {
-    const searchText = document.getElementsByClassName("search-box")[0].value;
-
     let newFilteredListOfRestaurants = listOfRestaurants.filter((r) =>
       r.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
@@ -47,7 +46,15 @@ const Body = () => {
   return (
     <div className="body-container">
       <div className="search-container">
-        <input className="search-box" placeholder="Search" name="search" />
+        <input
+          className="search-box"
+          placeholder="Search"
+          name="search"
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+        />
         <button
           className="search-button"
           onClick={() => {
