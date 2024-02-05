@@ -88,3 +88,9 @@ h6 {
 .res-card-image {
   width: 100%;
 }
+
+.user-card {
+  padding: 10px;
+  border: 5px double #000;
+  margin-bottom: 10px;
+}
