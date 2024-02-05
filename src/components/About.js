@@ -6,7 +6,7 @@ const About = () => {
     <div className="about-container">
       <h1 className="about-heading">About Us</h1>
       <p>This is about us page.</p>
-      <User name={"Shubham Soni (function)"} location={"Udaipur"} />
+      {/*<User name={"Shubham Soni (function)"} location={"Udaipur"} /> */}
       <UserClass name={"Shubham Soni (Class)"} location={"Bengaluru"} />
     </div>
   );
