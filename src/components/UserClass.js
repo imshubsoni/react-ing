@@ -4,6 +4,11 @@ class UserClass extends React.Component {
   constructor(props) {
     // ALWAYS Call Props, it is necessary
     super(props);
+
+    this.state = {
+      count: 0,
+      count2: 2,
+    };
   }
 
   render() {
@@ -11,6 +16,8 @@ class UserClass extends React.Component {
 
     return (
       <div className="user-card">
+        <h4>Count: {this.state.count}</h4>
+        <h4>Count2: {this.state.count2}</h4>
         <h2>Name: {name}</h2>
         <h3>Location: {location}</h3>
         <h3>Contact: @imshubsoni</h3>
