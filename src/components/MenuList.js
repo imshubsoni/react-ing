@@ -15,8 +15,9 @@ const MenuList = (cardInfo) => {
             return (
               <li>
                 {item?.card?.info?.name} ---- Rs.{" "}
-                {item?.card?.info?.price / 100} ----{" "}
-                {item?.card?.info?.isVeg ? "VEG" : "NONVEG"}
+                {item?.card?.info?.price / 100 ||
+                  item?.card?.info?.defaultPrice / 100}{" "}
+                ---- {item?.card?.info?.isVeg ? "VEG" : "NONVEG"}
               </li>
             );
           })}
