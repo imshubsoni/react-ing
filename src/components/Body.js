@@ -2,6 +2,7 @@ import ResCard from "./ResCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -38,6 +39,16 @@ const Body = () => {
 
     setFilteredListOfRestaurants(newFilteredListOfRestaurants);
   };
+
+  const onlineStatus = useOnlineStatus();
+  if (!onlineStatus) {
+    return (
+      <h2>
+        Looks like you're offline, please come back once the internet is
+        reachable
+      </h2>
+    );
+  }
 
   // Conditional Rendering -- rendering based on a condition or multiple conditions
   if (listOfRestaurants.length === 0) {
