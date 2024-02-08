@@ -24,7 +24,7 @@ const RestaurantMenu = () => {
       <h4>{costForTwoMessage}</h4>
       <h3>Menu</h3>
       {cards.map((card) => {
-        return <MenuList cardInfo={card} />;
+        return <MenuList cardInfo={card} key={self.crypto.randomUUID()} />;
       })}
     </div>
   );

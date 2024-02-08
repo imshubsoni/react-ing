@@ -98,8 +98,13 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredListOfRestaurants.map((restaurantInfo) => (
-          <Link to={"/restaurant/" + restaurantInfo.info.id}>
-            <ResCard key={restaurantInfo.info.id} resData={restaurantInfo} />
+          // Key property is always applied to the Parent Component -- Like here we have to give
+          // Key property to Link and not to ResCard
+          <Link
+            to={"/restaurant/" + restaurantInfo.info.id}
+            key={restaurantInfo.info.id}
+          >
+            <ResCard resData={restaurantInfo} />
           </Link>
         ))}
       </div>
