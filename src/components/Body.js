@@ -43,7 +43,7 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
   if (!onlineStatus) {
     return (
-      <h2>
+      <h2 className="text-center">
         Looks like you're offline, please come back once the internet is
         reachable
       </h2>
@@ -57,46 +57,48 @@ const Body = () => {
 
   return (
     <div className="body-container">
-      <div className="search-container">
-        <input
-          className="search-box"
-          placeholder="Search"
-          name="search"
-          value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-        />
-        <button
-          className="search-button"
-          onClick={() => {
-            searchRestaurants();
-          }}
-        >
-          Search
-        </button>
+      <div className="actions-container flex m-4">
+        <div className="search-container flex">
+          <input
+            className="search-box px-2 py-1 border border-solid border-black rounded-md mr-2"
+            placeholder="Search"
+            name="search"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button
+            className="search-button px-2 py-1 border border-solid border-blue-800 bg-blue-100 rounded-md"
+            onClick={() => {
+              searchRestaurants();
+            }}
+          >
+            Search
+          </button>
+        </div>
+        <div className="filters-container ml-20">
+          <button
+            className="filter-button px-2 py-1 border border-solid border-amber-800 bg-amber-100 rounded-sm mr-4"
+            onClick={() => {
+              fetchAndUseSwiggyApiData();
+            }}
+          >
+            All Restaurants
+          </button>
+          <button
+            className="filter-button px-2 py-1 border border-solid border-green-800 bg-green-100 rounded-sm"
+            onClick={() => {
+              setFilteredListOfRestaurants(
+                listOfRestaurants.filter((res) => res.info.avgRating > 4.3)
+              );
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+        </div>
       </div>
-      <div className="filters-container">
-        <button
-          className="filter-button"
-          onClick={() => {
-            fetchAndUseSwiggyApiData();
-          }}
-        >
-          All Restaurants
-        </button>
-        <button
-          className="filter-button"
-          onClick={() => {
-            setFilteredListOfRestaurants(
-              listOfRestaurants.filter((res) => res.info.avgRating > 4.3)
-            );
-          }}
-        >
-          Top Rated Restaurants
-        </button>
-      </div>
-      <div className="res-container">
+      <div className="res-container flex flex-wrap ml-2">
         {filteredListOfRestaurants.map((restaurantInfo) => (
           // Key property is always applied to the Parent Component -- Like here we have to give
           // Key property to Link and not to ResCard

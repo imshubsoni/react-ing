@@ -15,20 +15,22 @@ const Header = () => {
       </div>
       <div className="nav-items-container flex items-center">
         <ul className="nav-items flex">
-          <li className="px-4">Online Status: {onlineStatus ? "🌝" : "🌚"}</li>
-          <li className="px-4">
+          <li className="px-4 font-bold">
+            Online Status: {onlineStatus ? "🌝" : "🌚"}
+          </li>
+          <li className="px-4 hover:underline">
             <Link to="/">Home</Link>
           </li>
-          <li className="px-4">
+          <li className="px-4 hover:underline">
             <Link to="/grocerystore">Grocery</Link>
           </li>
-          <li className="px-4">
+          <li className="px-4 hover:underline">
             <Link to="/about">About Us</Link>
           </li>
-          <li className="px-4">
+          <li className="px-4 hover:underline">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li className="px-4">Cart</li>
+          <li className="px-4 hover:underline">Cart</li>
           <li className="px-4">
             <button
               className="btn-login py-2 px-4 bg-slate-100 border border-solid border-black rounded-lg -mt-2 hover:bg-slate-200 hover:rounded-3xl transition-all ease-in-out duration-500"
