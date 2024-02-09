@@ -1,30 +1,33 @@
-const MenuList = (cardInfo) => {
-  if (
-    cardInfo?.cardInfo?.card?.card?.title &&
-    cardInfo?.cardInfo?.card?.card?.title != "Top Picks"
-  ) {
-    const itemCards = cardInfo?.cardInfo?.card?.card?.itemCards
-      ? cardInfo?.cardInfo?.card?.card?.itemCards
-      : [];
+import { useState } from "react";
+import ItemCard from "./ItemCard";
 
-    return (
-      <div className="menulist-container">
-        <h4>{cardInfo?.cardInfo?.card.card.title}</h4>
-        <ul>
-          {itemCards.map((item) => {
-            return (
-              <li key={item?.card?.info?.id}>
-                {item?.card?.info?.name} ---- Rs.{" "}
-                {item?.card?.info?.price / 100 ||
-                  item?.card?.info?.defaultPrice / 100}{" "}
-                ---- {item?.card?.info?.isVeg ? "VEG" : "NONVEG"}
-              </li>
-            );
-          })}
-        </ul>
+const MenuList = (props) => {
+  const itemCards = props?.cardInfo?.card?.card?.itemCards;
+
+  const [showMenu, setShowMenu] = useState(false);
+
+  return (
+    <div className="category-container w-6/12 m-auto bg-gray-200 mb-4 rounded-md p-4 shadow-md">
+      <div
+        className="category-header flex justify-between"
+        onClick={() => {
+          setShowMenu(!showMenu);
+        }}
+      >
+        <span className="font-bold text-xl">
+          {props?.cardInfo?.card?.card?.title} - (
+          {props?.cardInfo?.card?.card?.itemCards.length})
+        </span>
+        <span className="text-xl">🔽</span>
       </div>
-    );
-  }
+      <div className="category-body">
+        {showMenu &&
+          itemCards.map((card) => (
+            <ItemCard card={card} key={card?.card?.info?.id} />
+          ))}
+      </div>
+    </div>
+  );
 };
 
 export default MenuList;

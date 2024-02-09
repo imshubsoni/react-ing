@@ -12,18 +12,24 @@ const RestaurantMenu = () => {
     return <Shimmer />;
   }
 
-  const { name, avgRating, costForTwoMessage } =
+  const { name, avgRating, costForTwoMessage, cuisines } =
     resInfo?.cards[0].card.card.info;
 
-  const { cards } = resInfo?.cards[2].groupedCard.cardGroupMap.REGULAR;
+  const categories =
+    resInfo?.cards[2].groupedCard.cardGroupMap.REGULAR.cards.filter(
+      (card) =>
+        card?.card?.card?.["@type"] ==
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
 
   return (
-    <div className="menu-container">
-      <h2>{name}</h2>
-      <h4>{avgRating} Stars</h4>
-      <h4>{costForTwoMessage}</h4>
-      <h3>Menu</h3>
-      {cards.map((card) => {
+    <div className="menu-container text-center">
+      <h2 className="font-bold m-3 mt-10 text-2xl">{name}</h2>
+      <h3 className="font-bold text-md">{cuisines.join(", ")}</h3>
+      <h4 className="font-bold text-md m-2">
+        {avgRating} Stars - {costForTwoMessage}
+      </h4>
+      {categories.map((card) => {
         return <MenuList cardInfo={card} key={self.crypto.randomUUID()} />;
       })}
     </div>
