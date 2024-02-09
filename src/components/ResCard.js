@@ -23,4 +23,20 @@ const ResCard = (props) => {
   );
 };
 
+// Higher Order Component -->
+// Input -> Component // Returns(Output) -> Component
+
+export const withPureVegLabel = (ResCard) => {
+  return (props) => {
+    return (
+      <div className="res-card-container-promoted">
+        <label className="absolute bg-green-700 font-bold text-white rounded-lg m-2 p-2 ml-4">
+          Pure Veg
+        </label>
+        <ResCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default ResCard;

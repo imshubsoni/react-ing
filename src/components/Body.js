@@ -1,4 +1,4 @@
-import ResCard from "./ResCard";
+import ResCard, { withPureVegLabel } from "./ResCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -10,6 +10,8 @@ const Body = () => {
     []
   );
   const [searchText, setSearchText] = useState("");
+
+  const ResCardPureVeg = withPureVegLabel(ResCard);
 
   const fetchAndUseSwiggyApiData = async () => {
     const data = await fetch(
@@ -106,7 +108,11 @@ const Body = () => {
             to={"/restaurant/" + restaurantInfo.info.id}
             key={restaurantInfo.info.id}
           >
-            <ResCard resData={restaurantInfo} />
+            {restaurantInfo?.info?.veg ? (
+              <ResCardPureVeg resData={restaurantInfo} />
+            ) : (
+              <ResCard resData={restaurantInfo} />
+            )}
           </Link>
         ))}
       </div>
