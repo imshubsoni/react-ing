@@ -1,8 +1,9 @@
 import ResCard, { withPureVegLabel } from "./ResCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -12,6 +13,8 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   const ResCardPureVeg = withPureVegLabel(ResCard);
+
+  const userContextData = useContext(UserContext);
 
   const fetchAndUseSwiggyApiData = async () => {
     const data = await fetch(
@@ -98,6 +101,16 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
+        </div>
+        <div className="userDetails-container ml-20">
+          <label>UserName : </label>
+          <input
+            className="border border-black rounded-md px-2 py-1"
+            value={userContextData.loggedInUserName}
+            onChange={(e) => {
+              userContextData.setUserName(e.target.value);
+            }}
+          />
         </div>
       </div>
       <div className="res-container flex flex-wrap ml-2">

@@ -14,10 +14,10 @@ const AppLayout = () => {
     };
 
     setUserName(data.name);
-  });
+  }, []);
 
   return (
-    <UserContext.Provider value={{ loggedInUserName: userName }}>
+    <UserContext.Provider value={{ loggedInUserName: userName, setUserName }}>
       <div className="app-layout">
         <UserContext.Provider value={{ loggedInUserName: "Elon Musk" }}>
           <Header />
