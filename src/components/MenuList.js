@@ -3,15 +3,15 @@ import ItemCard from "./ItemCard";
 
 const MenuList = (props) => {
   const itemCards = props?.cardInfo?.card?.card?.itemCards;
-
-  const [showMenu, setShowMenu] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   return (
     <div className="category-container w-6/12 m-auto bg-gray-200 mb-4 rounded-md p-4 shadow-md">
       <div
-        className="category-header flex justify-between"
+        className="category-header flex justify-between hover:cursor-pointer"
         onClick={() => {
-          setShowMenu(!showMenu);
+          props.setShowIndex(isExpanded);
+          setIsExpanded(!isExpanded);
         }}
       >
         <span className="font-bold text-xl">
@@ -21,7 +21,7 @@ const MenuList = (props) => {
         <span className="text-xl">🔽</span>
       </div>
       <div className="category-body">
-        {showMenu &&
+        {props.showMenu &&
           itemCards.map((card) => (
             <ItemCard card={card} key={card?.card?.info?.id} />
           ))}
