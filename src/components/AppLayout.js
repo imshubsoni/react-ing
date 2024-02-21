@@ -4,6 +4,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "../utils/reduxStore/appStore";
 
 const AppLayout = () => {
   const [userName, setUserName] = useState();
@@ -17,15 +19,17 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedInUserName: userName, setUserName }}>
-      <div className="app-layout">
-        <UserContext.Provider value={{ loggedInUserName: "Elon Musk" }}>
-          <Header />
-        </UserContext.Provider>
-        <Outlet />
-        <Footer />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUserName: userName, setUserName }}>
+        <div className="app-layout">
+          <UserContext.Provider value={{ loggedInUserName: "Elon Musk" }}>
+            <Header />
+          </UserContext.Provider>
+          <Outlet />
+          <Footer />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 

@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
@@ -10,6 +11,8 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   const userConextData = useContext(UserContext);
+
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="header-container flex justify-between m-4 p-4 bg-green-200 rounded-lg shadow-zinc-400 shadow-lg sticky">
@@ -33,7 +36,9 @@ const Header = () => {
           <li className="px-4 hover:underline">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li className="px-4 hover:underline">Cart</li>
+          <li className="px-4 hover:underline">
+            <Link to="/cart">Cart - ({cartItems.length})</Link>
+          </li>
           <li className="px-4">
             <button
               className="btn-login py-2 px-4 bg-slate-100 border border-solid border-black rounded-lg -mt-2 hover:bg-slate-200 hover:rounded-3xl transition-all ease-in-out duration-500"
